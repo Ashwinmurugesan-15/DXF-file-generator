@@ -1,0 +1,770 @@
+:root {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #333;
+  background-color: #bbdefb;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  transition: max-width 0.3s ease;
+  position: relative;
+  /* Ensure container is relative for absolute positioning of logout */
+  /* Low z-index for main app */
+  margin-top: 10px;
+  /* Minimal space for navbar */
+}
+
+
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  align-items: center;
+}
+
+.top-navbar {
+  width: 100%;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: flex-end;
+  /* Align to right like standard navitems or left if preferred, user said corner */
+  background-color: transparent;
+  /* Or white if full bar needed, user image implies white bg or light */
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.btn-template-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: #283593;
+  /* Same deep blue */
+  font-weight: 500;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 8px 16px;
+  width: auto;
+  margin-top: 0;
+  transition: color 0.2s;
+  margin-right: 10px;
+  /* Spacing between Template and Logout */
+}
+
+.btn-template-nav:hover {
+  color: #1a237e;
+  background-color: rgba(40, 53, 147, 0.1);
+  border-radius: 8px;
+}
+
+.btn-logout-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: #283593;
+  /* Deep Blue */
+  font-weight: 500;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 8px 16px;
+  width: auto;
+  margin-top: 0;
+  transition: color 0.2s;
+}
+
+.btn-logout-nav:hover {
+  color: #434ec9;
+  background-color: rgba(91, 103, 242, 0.1);
+  border-radius: 8px;
+}
+
+.btn-logout-nav svg {
+  stroke-width: 2px;
+}
+
+.container-batch {
+  max-width: 800px;
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 1rem;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #dc3545;
+  background-color: #f8d7da;
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.success {
+  color: #155724;
+  background-color: #d4edda;
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 2rem;
+  border-bottom: none;
+}
+
+.tab {
+  flex: 0 1 auto;
+  min-width: 120px;
+  padding: 0.75rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 600;
+  color: #555;
+  background-color: #e9ecef;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.tab:hover {
+  background-color: #dee2e6;
+}
+
+.tab.active {
+  color: white;
+  background-color: #007bff;
+  box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+/* Batch Mode Styles */
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.checkbox-group input {
+  width: auto;
+}
+
+.batch-container {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.batch-grid-beam {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 40px;
+  gap: 10px;
+  align-items: center;
+}
+
+.batch-grid-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 40px;
+  gap: 10px;
+  align-items: center;
+}
+
+.grid-header {
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-align: center;
+  color: #555;
+  background: #f8f9fa;
+  padding: 8px 0;
+  border-radius: 4px;
+}
+
+.index-cell {
+  font-weight: bold;
+  color: #888;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.btn-remove {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #dc3545;
+  margin-top: 0;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-remove:hover {
+  background-color: #a71d2a;
+}
+
+.btn-add {
+  background-color: #28a745;
+  width: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-add:hover {
+  background-color: #218838;
+}
+
+/* Hide arrow controls in number inputs */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+/* Login Page Styles */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  /* Slate Blue Gradient to match reference image */
+  background: linear-gradient(to bottom, #778899 0%, #dbe4ea 100%);
+  position: fixed;
+  /* Changed to fixed to ensure it covers viewport */
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  /* Higher z-index to be on top */
+}
+
+
+
+.login-card {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 350px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.login-card h2 {
+  margin-bottom: 2rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.input-group .icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 1.2rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 12px 12px 45px;
+  /* Space for icon */
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #007bff;
+}
+
+.forgot-password {
+  display: block;
+  text-align: right;
+  color: #666;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+/* Templates Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 650px;
+  max-height: 85vh; /* Limit height of modal */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 5;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #283593; /* Deep blue like the image */
+  font-weight: 600;
+}
+
+.modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-reset-templates {
+  background: none;
+  border: 1px solid #dc3545;
+  color: #dc3545;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  width: auto;
+  margin-top: 0;
+  transition: all 0.2s;
+}
+
+.btn-reset-templates:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+
+.template-right-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  flex-shrink: 0;
+  margin-right: 25px; /* Moved further left */
+}
+
+.btn-delete-template {
+  background: #fff;
+  border: 1px solid #ffcdd2; /* Light red border */
+  color: #f44336; /* Red color */
+  font-size: 1rem;
+  padding: 0;
+  width: 24px; /* Slightly larger */
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  margin-top: -12px; /* Moved further up */
+}
+
+.btn-delete-template:hover {
+  background: #f44336;
+  color: white;
+  border-color: #f44336;
+}
+
+.btn-save-new-template {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  line-height: 1; /* Match line height */
+}
+
+.btn-save-new-template:hover {
+  background-color: #43a047;
+  transform: translateY(-1px);
+}
+
+.upload-dxf-section {
+  margin-bottom: 10px;
+  padding: 8px;
+  background: #f8faff;
+  border: 1px dashed #d0d7de;
+  border-radius: 8px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.upload-dxf-section:hover {
+  border-color: #2196f3;
+  background: #f0f7ff;
+}
+
+.btn-upload-dxf {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #2196f3;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 1px 3px rgba(33, 150, 243, 0.2);
+}
+
+.btn-upload-dxf:hover {
+  background-color: #1e88e5;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(33, 150, 243, 0.3);
+}
+
+.upload-hint {
+  margin-top: 4px;
+  font-size: 0.7rem;
+  color: #666;
+}
+
+.btn-save-new-template svg {
+  stroke: white;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  color: #999;
+  cursor: pointer;
+  padding: 0;
+  width: auto;
+  margin: 0;
+}
+
+.btn-close:hover {
+  color: #333;
+}
+
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  overflow-y: auto; /* Enable vertical scroll */
+  padding: 10px 8px 20px 5px;
+  flex: 1; /* Take remaining space */
+  max-height: 60vh; /* Specific scrollable height */
+}
+
+/* Custom Scrollbar for Template Grid */
+.template-grid::-webkit-scrollbar {
+  width: 8px;
+}
+
+.template-grid::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.template-grid::-webkit-scrollbar-thumb {
+  background: #3f51b5;
+  border-radius: 10px;
+}
+
+.template-grid::-webkit-scrollbar-thumb:hover {
+  background: #283593;
+}
+
+.template-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* Remove gap for header style */
+  padding: 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  background: white;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: relative; /* For absolute positioning of delete */
+}
+
+.template-card:hover {
+  border-color: #3f51b5;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(63, 81, 181, 0.15);
+}
+
+.template-header-row {
+  display: flex;
+  flex-direction: row; /* Horizontal layout */
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  cursor: pointer;
+  padding: 12px 15px;
+  background-color: #f8f9ff;
+  border-bottom: 1px solid #eee;
+  position: relative;
+}
+
+.template-header-row:hover {
+  background-color: #f0f2ff;
+}
+
+.template-icon {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  color: #3f51b5;
+  border: 2px solid #e8eaf6;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.template-info {
+  text-align: left;
+  flex: 1;
+  min-width: 0; /* Allow text to wrap/shrink properly */
+}
+
+.template-info h3 {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 600;
+  line-height: 1.3;
+  word-wrap: break-word;
+}
+
+.template-load-badge {
+  flex-shrink: 0;
+  font-size: 0.55rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: #eef2ff;
+  color: #3f51b5;
+  border: 1px solid #e0e7ff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 1;
+  transition: all 0.2s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.template-card:hover .template-load-badge {
+  background: #3f51b5;
+  color: white;
+  transform: translateY(-1px);
+}
+
+
+
+.template-edit-controls {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  width: 100%;
+  padding: 15px;
+  background: white;
+}
+
+.mini-input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  font-size: 0.75rem;
+  background: #f9f9fb;
+  padding: 8px 10px;
+  border: 1px solid #edf0f7;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.mini-input:focus-within {
+  border-color: #3f51b5;
+  background: white;
+  box-shadow: 0 0 0 2px rgba(63, 81, 181, 0.1);
+}
+
+.mini-input span {
+  font-weight: bold;
+  color: #8898aa;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.mini-input input {
+  border: none;
+  background: transparent;
+  padding: 2px 0;
+  font-size: 0.95rem;
+  color: #2c3e50;
+  font-weight: 700;
+  width: 100%;
+}
+
+.mini-input input:focus {
+  outline: none;
+  border-bottom: 1px solid #3f51b5;
+}
